@@ -1,0 +1,16 @@
+SELECT 
+    d.DEPARTMENT_NAME AS "Department Name", 
+    e.FIRST_NAME || ' ' || e.LAST_NAME AS "Employee Name", 
+    e.SALARY AS "Salary" 
+FROM 
+    EMPLOYEES e
+INNER JOIN 
+    DEPARTMENTS d 
+    ON e.DEPARTMENT_ID = d.DEPARTMENT_ID
+INNER JOIN 
+    JOBS j 
+    ON e.JOB_ID = j.JOB_ID
+WHERE 
+    UPPER(j.JOB_TITLE) LIKE '%CLERK%'
+ORDER BY 
+    d.DEPARTMENT_NAME;

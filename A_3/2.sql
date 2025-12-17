@@ -1,0 +1,11 @@
+SELECT 
+    e.EMPLOYEE_ID AS "Employee No.", 
+    e.FIRST_NAME || ' ' || e.LAST_NAME AS "Employee Name", 
+    e.SALARY AS "Salary", 
+    e.HIRE_DATE AS "Hired Date", 
+    d.DEPARTMENT_NAME AS "Name of the Department" 
+ FROM EMPLOYEES e 
+ JOIN DEPARTMENTS d 
+    ON e.DEPARTMENT_ID = d.DEPARTMENT_ID 
+ WHERE HIRE_DATE BETWEEN DATE '2001-01-01' AND DATE '2001-12-31'
+ ORDER BY d.DEPARTMENT_NAME; 

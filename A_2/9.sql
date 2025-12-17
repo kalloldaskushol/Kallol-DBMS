@@ -1,0 +1,6 @@
+SELECT
+  JOB_ID    AS "Job Name",
+  (FIRST_NAME || ' ' || LAST_NAME) AS "Employee Name",
+  SALARY    AS "Salary"
+FROM EMPLOYEES
+WHERE UPPER(LAST_NAME) LIKE '%S';

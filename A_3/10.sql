@@ -1,0 +1,17 @@
+SELECT 
+    d.DEPARTMENT_NAME AS "Department Name", 
+    SUM(e.SALARY) AS "Summarize Salary" 
+FROM 
+    EMPLOYEES e 
+INNER JOIN 
+    DEPARTMENTS d 
+    ON e.DEPARTMENT_ID = d.DEPARTMENT_ID 
+INNER JOIN 
+    JOBS j 
+    ON e.JOB_ID = j.JOB_ID 
+WHERE 
+    UPPER(j.JOB_TITLE) LIKE 'M%' 
+GROUP BY 
+    d.DEPARTMENT_NAME 
+ORDER BY 
+    d.DEPARTMENT_NAME;

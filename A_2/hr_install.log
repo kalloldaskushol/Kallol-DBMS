@@ -1,0 +1,14 @@
+BEGIN
+*
+ERROR at line 1:
+ORA-20999: Error: the HR password is mandatory! Please specify a password!
+ORA-06512: at line 3
+
+https://docs.oracle.com/error-help/db/ora-20999/
+
+
+Thank you for installing the Oracle Human Resources Sample Schema.
+This installation script will automatically exit your database session
+at the end of the installation or if any error is encountered.
+The entire installation will be logged into the 'hr_install.log' log file.
+
