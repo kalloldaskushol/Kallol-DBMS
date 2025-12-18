@@ -37,9 +37,11 @@ WHERE passenger_id IN (
 
 -- Display train schedule between a time range⭐⭐⭐⭐⭐
 
-SELECT t.train_name, ts.departure_time, ts.arrival_time
-FROM Train t
-JOIN Train_Schedule ts ON t.train_id = ts.train_id;
+SELECT *
+FROM Ticket
+WHERE TRUNC(journey_date)
+      BETWEEN DATE '2026-07-01' AND DATE '2026-07-15'
+ORDER BY journey_date;
 
 -- Train schedule with ticket count
 SELECT t.train_name, ts.departure_time, ts.arrival_time,
