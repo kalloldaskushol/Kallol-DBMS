@@ -45,7 +45,7 @@ WHERE passenger_id IN (
 -- 4. Display train schedule between a time range
 
 SELECT *
-    FROM Ticket --ticket table has journey_date column
+    FROM Ticket
 WHERE journey_date >=  TO_DATE(:start_date, 'YYYY-MM-DD')
   AND journey_date <=  TO_DATE(:end_date,   'YYYY-MM-DD')
   AND booking_status LIKE 'CONFIRMED'
