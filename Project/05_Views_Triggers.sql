@@ -47,12 +47,22 @@ BEGIN
     END IF;
 END;
 /
+
 -- Testing the trigger
--- Assume we have a payment with payment_id = 1
+UPDATE Ticket
+SET booking_status = 'CONFIRMED'
+WHERE ticket_id = 522;
+
+-- 1. Before
+SELECT booking_status FROM Ticket WHERE ticket_id = 522;
+
+-- 2. Fire trigger
 UPDATE Payment
 SET payment_status = 'FAILED'
-WHERE payment_id = 1;  
--- Check the corresponding ticket's booking_status
-SELECT booking_status
-FROM Ticket
-WHERE ticket_id = (SELECT ticket_id FROM Payment WHERE payment_id = 1);
+WHERE ticket_id = 522;
+
+-- 3. After
+SELECT booking_status FROM Ticket WHERE ticket_id = 522;
+
+-- Output change:
+-- Before: CONFIRMED ---- After: CANCELLED
