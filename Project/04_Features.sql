@@ -1,25 +1,34 @@
 -- 1. List trains with source & destination station names
-SELECT t.train_name,
-       s1.station_name AS Source_Station,
-       s2.station_name AS Destination_Station
-    -- need to add the time details also
-    FROM Train t
+SELECT 
+    t.train_name,
+    s1.station_name AS source_station,
+    s2.station_name AS destination_station,
+    ts.departure_time,
+    ts.arrival_time
+FROM Train t
 JOIN Train_Schedule ts ON t.train_id = ts.train_id
 JOIN Station s1 ON ts.source_station = s1.station_id
 JOIN Station s2 ON ts.destination_station = s2.station_id;
 
--- 2. Find trains that start from a specific city (subquery)
+
+-- 2. Find trains that start from a specific city and ends to a specific city:
 SELECT train_name
-    FROM Train
+FROM Train
 WHERE train_id IN (
     SELECT train_id
     FROM Train_Schedule
     WHERE source_station IN (
         SELECT station_id
         FROM Station
-        WHERE UPPER(city) = UPPER(:city_name)
+        WHERE UPPER(city) = UPPER(:source_city)
+    )
+    AND destination_station IN (
+        SELECT station_id
+        FROM Station
+        WHERE UPPER(city) = UPPER(:dest_city)
     )
 );
+
 
 -- To clear the variable
 UNDEFINE city_name;
