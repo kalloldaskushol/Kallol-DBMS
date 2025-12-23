@@ -48,7 +48,7 @@ BEGIN
 END;
 /
 
--- Testing the trigger
+-- Testing the trigger --
 UPDATE Ticket
 SET booking_status = 'CONFIRMED'
 WHERE ticket_id = 522;
