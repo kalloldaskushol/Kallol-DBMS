@@ -45,5 +45,5 @@ SELECT *
     FROM Ticket
 WHERE journey_date BETWEEN TO_DATE(:start_date,'YYYY-MM-DD')
                     AND TO_DATE(:end_date,'YYYY-MM-DD')
-  AND booking_status LIKE 'CONFIRMED'
+    AND booking_status LIKE 'CONFIRMED'
 ORDER BY journey_date;
