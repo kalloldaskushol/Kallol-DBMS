@@ -56,7 +56,7 @@ WHERE ticket_id = 522;
 -- 1. Before
 SELECT booking_status FROM Ticket WHERE ticket_id = 522;
 
--- 2. Fire trigger
+-- 2. Lets Fire the trigger
 UPDATE Payment
 SET payment_status = 'FAILED'
 WHERE ticket_id = 522;
