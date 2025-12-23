@@ -30,7 +30,7 @@ WHERE train_id IN (
     )
 );
 
--- 3. Passengers booked for a specific train (train_id = 101)
+-- 3. Passengers booked for a specific train (train_id starts from 101)
 SELECT DISTINCT name
     FROM Passenger
 WHERE passenger_id IN (
