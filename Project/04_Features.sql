@@ -8,8 +8,8 @@ SELECT
     ts.arrival_time
 FROM Train t
 JOIN Train_Schedule ts ON t.train_id = ts.train_id
-JOIN Station s1 ON ts.source_station = s1.station_id
-JOIN Station s2 ON ts.destination_station = s2.station_id;
+JOIN Station s1 ON ts.source_station = s1.station_id -- Both are ids
+JOIN Station s2 ON ts.destination_station = s2.station_id; -- Both are ids
 
 
 -- 2. Find trains that start from a specific city and ends to a specific city:
@@ -30,10 +30,6 @@ WHERE train_id IN (
     )
 );
 
-
--- To clear the variable
-UNDEFINE city_name;
-
 -- 3. Passengers booked for a specific train (train_id = 101)
 SELECT DISTINCT name
     FROM Passenger
@@ -51,7 +47,3 @@ WHERE journey_date BETWEEN TO_DATE(:start_date,'YYYY-MM-DD')
                     AND TO_DATE(:end_date,'YYYY-MM-DD')
   AND booking_status LIKE 'CONFIRMED'
 ORDER BY journey_date;
-
--- To clear the variables
-UNDEFINE start_date;
-UNDEFINE end_date;

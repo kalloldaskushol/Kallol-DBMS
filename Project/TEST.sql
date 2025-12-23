@@ -1,6 +1,9 @@
 
 
 
+-- To clear the variables
+UNDEFINE start_date;
+UNDEFINE end_date;
 
 
 

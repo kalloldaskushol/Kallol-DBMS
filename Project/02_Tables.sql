@@ -29,7 +29,7 @@ CREATE TABLE Passenger (
     name VARCHAR(50) NOT NULL,
     age NUMBER CHECK (age > 0),
     gender VARCHAR(10),
-    phone VARCHAR(15) UNIQUE
+    phone VARCHAR(15) UNIQUE -- So that no two passengers can have the same phone number
 );
 
 -- Building TICKET table:-
