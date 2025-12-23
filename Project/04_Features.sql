@@ -1,6 +1,7 @@
 -- 1. List trains with source & destination station names
 SELECT 
     t.train_name,
+    s1.station_name || ' → ' || s2.station_name AS route,
     s1.station_name AS source_station,
     s2.station_name AS destination_station,
     ts.departure_time,
@@ -34,7 +35,7 @@ WHERE train_id IN (
 UNDEFINE city_name;
 
 -- 3. Passengers booked for a specific train (train_id = 101)
-SELECT name
+SELECT DISTINCT name
     FROM Passenger
 WHERE passenger_id IN (
     SELECT passenger_id
@@ -46,8 +47,8 @@ WHERE passenger_id IN (
 
 SELECT *
     FROM Ticket
-WHERE journey_date >=  TO_DATE(:start_date, 'YYYY-MM-DD')
-  AND journey_date <=  TO_DATE(:end_date,   'YYYY-MM-DD')
+WHERE journey_date BETWEEN TO_DATE(:start_date,'YYYY-MM-DD')
+                    AND TO_DATE(:end_date,'YYYY-MM-DD')
   AND booking_status LIKE 'CONFIRMED'
 ORDER BY journey_date;
 
