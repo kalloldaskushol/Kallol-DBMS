@@ -8,9 +8,8 @@ SELECT
     ts.arrival_time
 FROM Train t
 JOIN Train_Schedule ts ON t.train_id = ts.train_id
-JOIN Station s1 ON ts.source_station = s1.station_id -- Both are ids
-JOIN Station s2 ON ts.destination_station = s2.station_id; -- Both are ids
-
+JOIN Station s1 ON ts.source_station = s1.station_id -- Both are station ids 
+JOIN Station s2 ON ts.destination_station = s2.station_id; -- Both are station ids
 
 -- 2. Find trains that start from a specific city and ends to a specific city:
 SELECT train_name
@@ -36,7 +35,7 @@ SELECT DISTINCT name
 WHERE passenger_id IN (
     SELECT passenger_id
     FROM Ticket
-    WHERE train_id = :train_id
+    WHERE train_id LIKE :train_id
 );
 
 -- 4. Display train schedule between a time range
