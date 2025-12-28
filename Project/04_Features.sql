@@ -1,7 +1,7 @@
 -- 1. List trains with source & destination station names
 SELECT 
     t.train_name,
-    s1.station_name || ' → ' || s2.station_name AS route,
+    (s1.station_name || ' → ' || s2.station_name) AS route,
     s1.station_name AS source_station,
     s2.station_name AS destination_station,
     ts.departure_time,
@@ -16,7 +16,7 @@ SELECT train_name
     FROM Train
 WHERE train_id IN (
     SELECT train_id
-    FROM Train_Schedule
+        FROM Train_Schedule
     WHERE source_station IN (
         SELECT station_id
             FROM Station
