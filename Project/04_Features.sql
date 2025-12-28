@@ -39,7 +39,6 @@ WHERE passenger_id IN (
 );
 
 -- 4. Display train schedule between a time range
-
 SELECT *
     FROM Ticket
 WHERE journey_date BETWEEN TO_DATE(:start_date,'YYYY-MM-DD')
