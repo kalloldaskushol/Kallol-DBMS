@@ -8,8 +8,7 @@ SELECT
     COUNT(t.ticket_id) AS booked_seats,
     (tr.total_seats - COUNT(t.ticket_id)) AS available_seats
 FROM Train tr
-LEFT JOIN Ticket t
-    ON tr.train_id = t.train_id
+LEFT JOIN Ticket t    ON tr.train_id = t.train_id
     AND t.booking_status = 'CONFIRMED'
 GROUP BY tr.train_id, tr.train_name, tr.total_seats;
 /
